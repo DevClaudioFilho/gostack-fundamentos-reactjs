@@ -38,8 +38,6 @@ const Dashboard: React.FC = () => {
     async function loadTransactions(): Promise<void> {
       const response = await api.get('transactions');
 
-      console.log(response.data);
-
       setTransactions(response.data.transactions);
       setBalance(response.data.balance);
     }
@@ -97,7 +95,7 @@ const Dashboard: React.FC = () => {
                       ? formatValue(transaction.value)
                       : `- ${formatValue(transaction.value)}`}
                   </td>
-                  <td>{transaction.category.title}</td>
+                  <td>{transaction.title}</td>
                   <td>{formatData(transaction.created_at)}</td>
                 </tr>
               ))}
